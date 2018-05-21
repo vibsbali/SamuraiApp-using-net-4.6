@@ -22,6 +22,7 @@ namespace SamuraiApp.Data
       {
          optionsBuilder
             .UseLoggerFactory(MyConsoleLoggerFactory)
+            .EnableSensitiveDataLogging(true) //<- This line will show the sensitive information in log
             .UseSqlServer("Server = (localdb)\\mssqllocaldb;Database = SamuraiApp;Trusted_Connection = True;");
          
       }
