@@ -11,10 +11,11 @@ namespace SamuraiApp.Domain
       //Foreign Id
       //public int BattleId { get; set; }
       
-      //Setting up many to many relationship - this is called Join Entitiy
+      //Setting up many to many relationship for multiple battles for each Samurai
+      //- this is called Join Entitiy
       public List<SamuraiBattle> SamuraiBattles { get; set; }
 
-      //Setting up one to one
+      //Setting up one to one - each samurai can have one and only one identity
       public SecretIdentity SecretIdentity { get; set; }
       public List<Quote> Quotes { get; set; } = new List<Quote>();
    }
