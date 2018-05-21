@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.AccessControl;
 
 namespace SamuraiApp.Domain
 {
@@ -12,6 +13,9 @@ namespace SamuraiApp.Domain
       
       //Setting up many to many relationship - this is called Join Entitiy
       public List<SamuraiBattle> SamuraiBattles { get; set; }
+
+      //Setting up one to one
+      public SecretIdentity SecretIdentity { get; set; }
       public List<Quote> Quotes { get; set; } = new List<Quote>();
    }
 }
