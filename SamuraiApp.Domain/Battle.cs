@@ -14,6 +14,6 @@ namespace SamuraiApp.Domain
 
       //Setting up many to many relationship One Samurai can fight in multiple battles and 
       //one battle can have multiple Samurais
-      public List<SamuraiBattle> SamuraiBattles { get; set; }
+      public List<SamuraiBattle> SamuraiBattles { get; set; } = new List<SamuraiBattle>();
    }
 }

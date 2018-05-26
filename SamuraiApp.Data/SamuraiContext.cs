@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using SamuraiApp.Domain;
@@ -29,8 +30,40 @@ namespace SamuraiApp.Data
 
       protected override void OnModelCreating(ModelBuilder modelBuilder)
       {
+         //composite key
          modelBuilder.Entity<SamuraiBattle>()
             .HasKey(s => new {s.SamuraiId, s.BattleId});
+         modelBuilder.Entity<Battle>().Property(b => b.StartDate).HasColumnType("Date");
+         modelBuilder.Entity<Battle>().Property(b => b.EndDate).HasColumnType("Date");
+
+         //Add Shadow properties
+         modelBuilder.Entity<Samurai>().Property<DateTime>("Created");
+         modelBuilder.Entity<Samurai>().Property<DateTime>("LastModified");
+
+         //Iterative Way for adding Shadow Properties to all the entities
+         foreach (var mutableEntityType in modelBuilder.Model.GetEntityTypes())
+         {
+            modelBuilder.Entity(mutableEntityType.Name).Property<DateTime>("Created");
+            modelBuilder.Entity(mutableEntityType.Name).Property<DateTime>("LastModified");
+         }
+      }
+
+      public override int SaveChanges()
+      {
+         ChangeTracker.DetectChanges();
+         var timeStamp = DateTime.Now;
+
+         foreach (var entry in ChangeTracker.Entries())
+         {
+            entry.Property("LastModified").CurrentValue = timeStamp;
+
+            if (entry.State == EntityState.Added)
+            {
+               entry.Property("Created").CurrentValue = timeStamp;
+            }
+         }
+
+         return base.SaveChanges();
       }
    }
 }

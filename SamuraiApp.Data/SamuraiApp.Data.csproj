@@ -113,6 +113,18 @@
     <Compile Include="Migrations\20180521032740_Relationships.designer.cs">
       <DependentUpon>20180521032740_Relationships.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20180522092044_AddedStartDateAndEndDateAsDateType.cs" />
+    <Compile Include="Migrations\20180522092044_AddedStartDateAndEndDateAsDateType.designer.cs">
+      <DependentUpon>20180522092044_AddedStartDateAndEndDateAsDateType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180523084457_ShadowProp.cs" />
+    <Compile Include="Migrations\20180523084457_ShadowProp.designer.cs">
+      <DependentUpon>20180523084457_ShadowProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20180523090214_ShadowToAll.cs" />
+    <Compile Include="Migrations\20180523090214_ShadowToAll.designer.cs">
+      <DependentUpon>20180523090214_ShadowToAll.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\SamuraiContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SamuraiContext.cs" />

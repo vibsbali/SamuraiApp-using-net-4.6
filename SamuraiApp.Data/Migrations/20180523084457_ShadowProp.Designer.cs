@@ -11,9 +11,10 @@ using System;
 namespace SamuraiApp.Data.Migrations
 {
     [DbContext(typeof(SamuraiContext))]
-    partial class SamuraiContextModelSnapshot : ModelSnapshot
+    [Migration("20180523084457_ShadowProp")]
+    partial class ShadowProp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,12 +26,8 @@ namespace SamuraiApp.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("Created");
-
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("Date");
-
-                    b.Property<DateTime>("LastModified");
 
                     b.Property<string>("Name");
 
@@ -46,10 +43,6 @@ namespace SamuraiApp.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("Created");
-
-                    b.Property<DateTime>("LastModified");
 
                     b.Property<int>("SamuraiId");
 
@@ -84,10 +77,6 @@ namespace SamuraiApp.Data.Migrations
 
                     b.Property<int>("BattleId");
 
-                    b.Property<DateTime>("Created");
-
-                    b.Property<DateTime>("LastModified");
-
                     b.HasKey("SamuraiId", "BattleId");
 
                     b.HasIndex("BattleId");
@@ -99,10 +88,6 @@ namespace SamuraiApp.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("Created");
-
-                    b.Property<DateTime>("LastModified");
 
                     b.Property<string>("RealName");
 
